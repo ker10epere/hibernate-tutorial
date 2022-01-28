@@ -12,26 +12,32 @@ import com.codingRfun.student.model.Student;
 public class TestJdbc {
 
 	public static void main(String[] args) {
+		
 		// the default config name of hibernate is hibernate.cfg.xml
 		// config name is optional if your config name is default name
-
-		// 1. create SessionFactory that stores details of the database
-		// Only create one SessionFactory for the whole application
+		
 		SessionFactory sessionFactory = new Configuration().configure("hibernate.cfg.xml")
 				.addAnnotatedClass(Student.class).buildSessionFactory();
-
-		// 2. get connection session to be used for database operations
 		Session session = sessionFactory.getCurrentSession();
 
-		// 3. open connection that communicates your app to database
+		// 1. create student object
+		Student student = new Student("angelina", "jolie", "angelina@gmail.com");
+
+		// 2. start transaction
 		session.beginTransaction();
 
-		// 4. create a Hibernate Query Language and return the results
-		List<Student> students = session.createQuery("from Student").getResultList();
-
+		// 3. save the student
+		session.save(student);
+		
+		// 4. commit the transaction
+		session.getTransaction().commit();
+		
 		// 5. close the session
 		session.close();
-		System.out.println(students);
+		
+		// hibernate automatically sets the id of the student object
+		// Student [id=4, firstName=angelina, lastName=jolie, email=angelina@gmail.com]
+		System.out.println(student);
 	}
 
 }

@@ -2,6 +2,8 @@ package com.codingRfun.student.model;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
 
@@ -10,21 +12,19 @@ import com.codingRfun.student.interfaces._Student;
 @Entity
 @Table(name = "student")
 public class Student implements _Student {
+	// IDENTITY works for SERIAL data type of ID
 	@Id
+	@GeneratedValue(strategy=GenerationType.IDENTITY) 
 	@Column(name = "id")
-//	@Column
 	private Integer id;
 
 	@Column(name = "first_name")
-//	@Column
 	private String firstName;
 
 	@Column(name = "last_name")
-//	@Column
 	private String lastName;
 
 	@Column(name = "email")
-//	@Column
 	private String email;
 
 	public Student(Integer id, String firstName, String lastName, String email) {
