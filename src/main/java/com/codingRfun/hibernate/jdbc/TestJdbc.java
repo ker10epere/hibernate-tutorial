@@ -20,23 +20,19 @@ public class TestJdbc {
 				.addAnnotatedClass(Student.class).buildSessionFactory();
 		Session session = sessionFactory.getCurrentSession();
 
-		// 1. create student object
-		Student student = new Student("angelina", "jolie", "angelina@gmail.com");
-
-		// 2. start transaction
+		// 1. start transaction
 		session.beginTransaction();
 
-		// 3. save the student
-		session.save(student);
+		// 2. get the student using the id in the second argument
+		// it will return the student from database
+		Student student = session.get(Student.class, 1);
 		
-		// 4. commit the transaction
+		// 3. commit the transaction
 		session.getTransaction().commit();
 		
-		// 5. close the session
+		// 4. close the session
 		session.close();
 		
-		// hibernate automatically sets the id of the student object
-		// Student [id=4, firstName=angelina, lastName=jolie, email=angelina@gmail.com]
 		System.out.println(student);
 	}
 
