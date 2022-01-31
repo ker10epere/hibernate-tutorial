@@ -26,8 +26,14 @@ public class TestJdbc {
 		// 2. get the student using the id in the second argument
 		// it will return the student from database
 		Student student = session.get(Student.class, 1);
+		System.out.println(student);
 		
-		// 3. commit the transaction
+		// 3. modify properties using setters
+		student.setFirstName("john");
+		student.setLastName("hopkins");
+		student.setEmail("hopkins@gmail.com");
+		
+		// 4. commit the transaction
 		session.getTransaction().commit();
 		
 		// 4. close the session
