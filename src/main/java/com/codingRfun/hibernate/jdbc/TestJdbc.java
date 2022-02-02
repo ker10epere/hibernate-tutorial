@@ -16,17 +16,18 @@ public class TestJdbc {
 				.addAnnotatedClass(InstructorDetails.class).buildSessionFactory();
 		Session session = sessionFactory.getCurrentSession();
 //		getInstructor(session);
-//		insertOneToOne(session);
 //		getInstructorDetails(session, new InstructorDetails(1));
 //		deleteCascade(session, new Instructor(29));
 //		deleteCascadeInstructorDetailsBiDirectional(session, new InstructorDetails(1));
-		dontDeleteCascadeInstructorDetails(session, new InstructorDetails(2));
+//		dontDeleteCascadeInstructorDetails(session, new InstructorDetails(2));
+		InstructorDetails instructorDetails = new InstructorDetails("ker tenepere", "expert");
+
+		Instructor instructor = new Instructor("ker", "tenepere", "ker@gmail.com");
+		insertOneToOne(session, instructor, instructorDetails);
+
 	}
 
-	public static void insertOneToOne(Session session) {
-		InstructorDetails instructorDetails = new InstructorDetails("leonardo de caprio", "actor");
-
-		Instructor instructor = new Instructor("leonardo", "de caprio", "leonardo@gmail.com");
+	public static void insertOneToOne(Session session, Instructor instructor, InstructorDetails instructorDetails) {
 
 		instructor.setInstructorDetails(instructorDetails);
 
@@ -124,10 +125,10 @@ public class TestJdbc {
 			instructorDetails.getInstructor().setInstructorDetails(null);
 
 			/*
-			 * this deletion will also remove instructorDetails ID 
-			 * reference in the instructor
+			 * this deletion will also remove instructorDetails ID reference in the
+			 * instructor
 			 */
-			
+
 			session.delete(instructorDetails);
 			session.getTransaction().commit();
 

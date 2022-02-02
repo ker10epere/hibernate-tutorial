@@ -49,3 +49,9 @@ CREATE TABLE course(
 	FOREIGN KEY (instructor_id) REFERENCES instructors (id)
 );
 ```
+
+Truncate All Tables
+
+```sql
+truncate instructor_details, instructors, student, course restart identity cascade;
+```
