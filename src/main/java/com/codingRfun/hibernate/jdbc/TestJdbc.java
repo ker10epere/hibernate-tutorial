@@ -19,7 +19,8 @@ public class TestJdbc {
 //		insertOneToOne(session);
 //		getInstructorDetails(session, new InstructorDetails(1));
 //		deleteCascade(session, new Instructor(29));
-		deleteCascadeInstructorDetailsBiDirectional(session, new InstructorDetails(1));
+//		deleteCascadeInstructorDetailsBiDirectional(session, new InstructorDetails(1));
+		dontDeleteCascadeInstructorDetails(session, new InstructorDetails(2));
 	}
 
 	public static void insertOneToOne(Session session) {
@@ -109,6 +110,28 @@ public class TestJdbc {
 			System.out.println("fetched instructor details: " + instructorDetails);
 			System.out.println("fetched instructor: " + instructorDetails.getInstructor());
 
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			session.close();
+		}
+	}
+
+	public static void dontDeleteCascadeInstructorDetails(Session session, InstructorDetails item) {
+		session.beginTransaction();
+		try {
+			InstructorDetails instructorDetails = session.get(InstructorDetails.class, item.getId());
+			instructorDetails.getInstructor().setInstructorDetails(null);
+
+			/*
+			 * this deletion will also remove instructorDetails ID 
+			 * reference in the instructor
+			 */
+			
+			session.delete(instructorDetails);
+			session.getTransaction().commit();
+
+			System.out.println("DELETED: " + instructorDetails);
 		} catch (Exception e) {
 			e.printStackTrace();
 		} finally {

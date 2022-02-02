@@ -27,7 +27,8 @@ public class InstructorDetails implements _InstructorDetails {
 	private String hobby;
 
 	// mapping from instructor property
-	@OneToOne(mappedBy = "instructorDetails", cascade = { CascadeType.ALL })
+	@OneToOne(mappedBy = "instructorDetails", cascade = { CascadeType.DETACH, CascadeType.MERGE, CascadeType.PERSIST,
+			CascadeType.REFRESH })
 	private Instructor instructor;
 
 	public InstructorDetails(Integer id, String youtubeChannel, String hobby) {

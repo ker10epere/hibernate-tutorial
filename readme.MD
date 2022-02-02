@@ -1,8 +1,7 @@
 must add to build path hibernate orm jars
 
-
-
 Student Table
+
 ```sql
 CREATE TABLE students (
 	id serial4 NOT NULL,
@@ -14,6 +13,7 @@ CREATE TABLE students (
 ```
 
 Instructor Details Table
+
 ```sql
 CREATE TABLE public.instructor_details (
 	id int4 NOT NULL DEFAULT nextval('"instructor-details_id_seq"'::regclass),
@@ -24,6 +24,7 @@ CREATE TABLE public.instructor_details (
 ```
 
 Instructor Table
+
 ```sql
 CREATE TABLE public.instructors (
 	id int4 NOT NULL DEFAULT nextval('instructor_id_seq'::regclass),
@@ -33,5 +34,18 @@ CREATE TABLE public.instructors (
 	instructor_details_id int4 NULL,
 	CONSTRAINT instructor_pkey PRIMARY KEY (id),
 	CONSTRAINT fk_instructor_details_id FOREIGN KEY (instructor_details_id) REFERENCES public.instructor_details(id)
+);
+```
+
+Course Table
+
+```sql
+CREATE TABLE course(
+	id SERIAL PRIMARY KEY,
+	title TEXT,
+	instructor_id INTEGER NULL,
+	UNIQUE(title),
+	CONSTRAINT FK_instructor_id
+	FOREIGN KEY (instructor_id) REFERENCES instructors (id)
 );
 ```
