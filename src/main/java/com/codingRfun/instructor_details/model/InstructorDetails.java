@@ -1,12 +1,15 @@
 package com.codingRfun.instructor_details.model;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
+import com.codingRfun.instructor.model.Instructor;
 import com.codingRfun.instructor_details.interfaces._InstructorDetails;
 
 @Entity
@@ -16,10 +19,16 @@ public class InstructorDetails implements _InstructorDetails {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Column(name = "id")
 	private Integer id;
+
 	@Column(name = "youtube_channel")
 	private String youtubeChannel;
+
 	@Column(name = "hobby")
 	private String hobby;
+
+	// mapping from instructor property
+	@OneToOne(mappedBy = "instructorDetails", cascade = { CascadeType.ALL })
+	private Instructor instructor;
 
 	public InstructorDetails(Integer id, String youtubeChannel, String hobby) {
 		super();
@@ -65,6 +74,14 @@ public class InstructorDetails implements _InstructorDetails {
 
 	public void setHobby(String hobby) {
 		this.hobby = hobby;
+	}
+
+	public Instructor getInstructor() {
+		return instructor;
+	}
+
+	public void setInstructor(Instructor instructor) {
+		this.instructor = instructor;
 	}
 
 	@Override

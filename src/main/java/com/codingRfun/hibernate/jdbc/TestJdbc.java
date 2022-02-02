@@ -1,8 +1,5 @@
 package com.codingRfun.hibernate.jdbc;
 
-import javax.persistence.CascadeType;
-import javax.persistence.OneToOne;
-
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.cfg.Configuration;
@@ -21,8 +18,8 @@ public class TestJdbc {
 		Session session = sessionFactory.getCurrentSession();
 //		getInstructor(session);
 //		insertOneToOne(session);
-		
-		deleteCascase(session, new Instructor(29));
+//		deleteCascase(session, new Instructor(29));
+		getInstructorDetails(session, new InstructorDetails(1));
 	}
 
 	public static void insertOneToOne(Session session) {
@@ -54,7 +51,7 @@ public class TestJdbc {
 
 	public static void deleteCascase(Session session, Instructor item) {
 		session.beginTransaction();
-		
+
 		Instructor instructor = session.get(item.getClass(), item.getId());
 		System.out.println("fetched instructor: " + instructor + "\n");
 
@@ -70,4 +67,13 @@ public class TestJdbc {
 		System.out.println(instructor);
 	}
 
+	public static void getInstructorDetails(Session session, InstructorDetails item) {
+		session.beginTransaction();
+
+		InstructorDetails instructorDetails = session.get(InstructorDetails.class, item.getId());
+
+		System.out.println("fetched instructor details: " + instructorDetails);
+		System.out.println("fetched instructor: " + instructorDetails.getInstructor());
+
+	}
 }
