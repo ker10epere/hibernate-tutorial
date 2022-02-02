@@ -4,6 +4,7 @@ import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.cfg.Configuration;
 
+import com.codingRfun.course.model.Course;
 import com.codingRfun.instructor.model.Instructor;
 import com.codingRfun.instructor_details.model.InstructorDetails;
 import com.codingRfun.student.model.Student;
@@ -13,18 +14,24 @@ public class TestJdbc {
 	public static void main(String[] args) {
 		SessionFactory sessionFactory = new Configuration().configure("hibernate.cfg.xml")
 				.addAnnotatedClass(Student.class).addAnnotatedClass(Instructor.class)
-				.addAnnotatedClass(InstructorDetails.class).buildSessionFactory();
-		Session session = sessionFactory.getCurrentSession();
+				.addAnnotatedClass(InstructorDetails.class).addAnnotatedClass(Course.class).buildSessionFactory();
+//		Session session = sessionFactory.getCurrentSession();
 //		getInstructor(session);
 //		getInstructorDetails(session, new InstructorDetails(1));
 //		deleteCascade(session, new Instructor(29));
 //		deleteCascadeInstructorDetailsBiDirectional(session, new InstructorDetails(1));
 //		dontDeleteCascadeInstructorDetails(session, new InstructorDetails(2));
 		InstructorDetails instructorDetails = new InstructorDetails("ker tenepere", "expert");
-
 		Instructor instructor = new Instructor("ker", "tenepere", "ker@gmail.com");
-		insertOneToOne(session, instructor, instructorDetails);
 
+		Session currentSession1 = sessionFactory.getCurrentSession();
+		insertOneToOne(currentSession1, instructor, instructorDetails);
+
+		System.out.println("Outside Instructor" + instructor);
+
+		Session currentSession2 = sessionFactory.getCurrentSession();
+		createCourses(currentSession2, instructor, new Course("Ice Skating MasterClass"),
+				new Course("Cooking MasterClass"), new Course("ReactJs MasterClass"));
 	}
 
 	public static void insertOneToOne(Session session, Instructor instructor, InstructorDetails instructorDetails) {
@@ -133,6 +140,27 @@ public class TestJdbc {
 			session.getTransaction().commit();
 
 			System.out.println("DELETED: " + instructorDetails);
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			session.close();
+		}
+	}
+
+	public static void createCourses(Session session, Instructor item, Course... courses) {
+		session.beginTransaction();
+
+		try {
+			Instructor instructor = session.get(Instructor.class, item.getId());
+
+			for (Course course : courses) {
+				instructor.addCourse(course);
+			}
+
+			session.persist(instructor);
+
+			session.getTransaction().commit();
+
 		} catch (Exception e) {
 			e.printStackTrace();
 		} finally {

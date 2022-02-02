@@ -53,5 +53,5 @@ CREATE TABLE course(
 Truncate All Tables
 
 ```sql
-truncate instructor_details, instructors, student, course restart identity cascade;
+TRUNCATE "instructor_details", instructors, student, course RESTART IDENTITY CASCADE;
 ```

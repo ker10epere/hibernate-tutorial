@@ -10,11 +10,11 @@
 	<classpathentry kind="lib" path="WebContext/WEB-INF/lib/hibernate/classmate-1.5.1.jar"/>
 	<classpathentry kind="lib" path="WebContext/WEB-INF/lib/hibernate/FastInfoset-1.2.15.jar"/>
 	<classpathentry kind="lib" path="WebContext/WEB-INF/lib/hibernate/hibernate-commons-annotations-5.1.2.Final.jar"/>
-	<classpathentry kind="lib" path="WebContext/WEB-INF/lib/hibernate/hibernate-core-5.6.5.Final.jar" sourcepath="C:/Users/XURPAS~1/AppData/Local/Temp/.org.sf.feeling.decompiler1643765353320/source/hibernate-core-5.6.5.Final-sources-1643766715381.jar"/>
+	<classpathentry kind="lib" path="WebContext/WEB-INF/lib/hibernate/hibernate-core-5.6.5.Final.jar" sourcepath="C:/Users/XURPAS~1/AppData/Local/Temp/.org.sf.feeling.decompiler1643784903608/source/hibernate-core-5.6.5.Final-sources-1643792930338.jar"/>
 	<classpathentry kind="lib" path="WebContext/WEB-INF/lib/hibernate/istack-commons-runtime-3.0.7.jar"/>
 	<classpathentry kind="lib" path="WebContext/WEB-INF/lib/hibernate/jandex-2.4.2.Final.jar"/>
 	<classpathentry kind="lib" path="WebContext/WEB-INF/lib/hibernate/javax.activation-api-1.2.0.jar"/>
-	<classpathentry kind="lib" path="WebContext/WEB-INF/lib/hibernate/javax.persistence-api-2.2.jar" sourcepath="C:/Users/XURPAS~1/AppData/Local/Temp/.org.sf.feeling.decompiler1643765353320/source/javax.persistence-api-2.2-sources-1643769051360.jar"/>
+	<classpathentry kind="lib" path="WebContext/WEB-INF/lib/hibernate/javax.persistence-api-2.2.jar" sourcepath="C:/Users/XURPAS~1/AppData/Local/Temp/.org.sf.feeling.decompiler1643784903608/source/javax.persistence-api-2.2-sources-1643789012451.jar"/>
 	<classpathentry kind="lib" path="WebContext/WEB-INF/lib/hibernate/jaxb-api-2.3.1.jar"/>
 	<classpathentry kind="lib" path="WebContext/WEB-INF/lib/hibernate/jaxb-runtime-2.3.1.jar"/>
 	<classpathentry kind="lib" path="WebContext/WEB-INF/lib/hibernate/jboss-logging-3.4.3.Final.jar"/>
