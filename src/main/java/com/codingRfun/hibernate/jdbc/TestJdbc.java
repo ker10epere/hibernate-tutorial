@@ -8,7 +8,6 @@ import com.codingRfun.instructor.model.Instructor;
 import com.codingRfun.instructor_details.model.InstructorDetails;
 import com.codingRfun.student.model.Student;
 
-@SuppressWarnings("unchecked")
 public class TestJdbc {
 
 	public static void main(String[] args) {
@@ -18,8 +17,9 @@ public class TestJdbc {
 		Session session = sessionFactory.getCurrentSession();
 //		getInstructor(session);
 //		insertOneToOne(session);
-//		deleteCascase(session, new Instructor(29));
-		getInstructorDetails(session, new InstructorDetails(1));
+//		getInstructorDetails(session, new InstructorDetails(1));
+//		deleteCascade(session, new Instructor(29));
+		deleteCascadeInstructorDetailsBiDirectional(session, new InstructorDetails(1));
 	}
 
 	public static void insertOneToOne(Session session) {
@@ -54,7 +54,7 @@ public class TestJdbc {
 
 	}
 
-	public static void deleteCascade(Session session, Instructor item) {
+	public static void deleteCascadeInstructor(Session session, Instructor item) {
 		session.beginTransaction();
 
 		try {
@@ -63,6 +63,24 @@ public class TestJdbc {
 
 			// delete cascade will only work if Cascase.REMOVE is added
 			session.delete(instructor);
+			session.getTransaction().commit();
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			session.close();
+		}
+
+	}
+
+	public static void deleteCascadeInstructorDetailsBiDirectional(Session session, InstructorDetails item) {
+		session.beginTransaction();
+
+		try {
+			InstructorDetails instructorDetails = session.get(item.getClass(), item.getId());
+			System.out.println("fetched instructor: " + instructorDetails + "\n");
+
+			// delete cascade will only work if Cascase.REMOVE is added
+			session.delete(instructorDetails);
 			session.getTransaction().commit();
 		} catch (Exception e) {
 			e.printStackTrace();
