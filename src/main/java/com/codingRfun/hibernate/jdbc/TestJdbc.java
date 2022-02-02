@@ -29,51 +29,72 @@ public class TestJdbc {
 
 		instructor.setInstructorDetails(instructorDetails);
 
-		session.beginTransaction();
+		try {
+			session.beginTransaction();
 
-		/*
-		 * change cascade to ALL, if you want to use session.save operations
-		 * 
-		 * cascase ALL is also applicable to session.persist and other session
-		 * operations
-		 * 
-		 * @OneToOne(cascade = { CascadeType.ALL })
-		 */
+			/*
+			 * change cascade to ALL, if you want to use session.save operations
+			 * 
+			 * cascase ALL is also applicable to session.persist and other session
+			 * operations
+			 * 
+			 * @OneToOne(cascade = { CascadeType.ALL })
+			 */
 
-		session.persist(instructor);
+			session.persist(instructor);
 
-		session.getTransaction().commit();
+			session.getTransaction().commit();
 
-		session.close();
+			System.out.println(instructor);
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			session.close();
+		}
 
-		System.out.println(instructor);
 	}
 
-	public static void deleteCascase(Session session, Instructor item) {
+	public static void deleteCascade(Session session, Instructor item) {
 		session.beginTransaction();
 
-		Instructor instructor = session.get(item.getClass(), item.getId());
-		System.out.println("fetched instructor: " + instructor + "\n");
+		try {
+			Instructor instructor = session.get(item.getClass(), item.getId());
+			System.out.println("fetched instructor: " + instructor + "\n");
 
-		// delete cascade will only work if Cascase.REMOVE is added
-		session.delete(instructor);
-		session.getTransaction().commit();
+			// delete cascade will only work if Cascase.REMOVE is added
+			session.delete(instructor);
+			session.getTransaction().commit();
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			session.close();
+		}
+
 	}
 
-	public static void getInstructor(Session session) {
+	public static void getInstructor(Session session, Instructor item) {
 		session.beginTransaction();
-		Instructor instructor = session.get(Instructor.class, 1);
-		session.refresh(instructor);
-		System.out.println(instructor);
+		try {
+			Instructor instructor = session.get(Instructor.class, item.getId());
+			System.out.println(instructor);
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			session.close();
+		}
 	}
 
 	public static void getInstructorDetails(Session session, InstructorDetails item) {
 		session.beginTransaction();
+		try {
+			InstructorDetails instructorDetails = session.get(InstructorDetails.class, item.getId());
+			System.out.println("fetched instructor details: " + instructorDetails);
+			System.out.println("fetched instructor: " + instructorDetails.getInstructor());
 
-		InstructorDetails instructorDetails = session.get(InstructorDetails.class, item.getId());
-
-		System.out.println("fetched instructor details: " + instructorDetails);
-		System.out.println("fetched instructor: " + instructorDetails.getInstructor());
-
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			session.close();
+		}
 	}
 }
