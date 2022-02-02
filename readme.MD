@@ -15,23 +15,23 @@ CREATE TABLE students (
 
 Instructor Details Table
 ```sql
-CREATE TABLE  "instructor-details"(
-	id SERIAL PRIMARY KEY,
-	youtube_channel TEXT DEFAULT NULL,
-	hobby TEXT DEFAULT NULL
-)
+CREATE TABLE public.instructor_details (
+	id int4 NOT NULL DEFAULT nextval('"instructor-details_id_seq"'::regclass),
+	youtube_channel text NULL,
+	hobby text NULL,
+	CONSTRAINT "instructor_details_pkey" PRIMARY KEY (id)
+);
 ```
 
-Instructor Details Table
+Instructor Table
 ```sql
-CREATE TABLE  instructors(
-	id SERIAL PRIMARY KEY,
-	first_name TEXT DEFAULT NULL,
-	last_name TEXT DEFAULT NULL,
-	email text TEXT DEFAULT NULL,
-	"instructor-details-id" INT DEFAULT NULL,
-	CONSTRAINT fk_instructor_details_id
-	FOREIGN KEY("instructor-details-id") 
-	REFERENCES instructor(id)
-)
+CREATE TABLE public.instructors (
+	id int4 NOT NULL DEFAULT nextval('instructor_id_seq'::regclass),
+	first_name text NULL,
+	last_name text NULL,
+	email text NULL,
+	instructor_details_id int4 NULL,
+	CONSTRAINT instructor_pkey PRIMARY KEY (id),
+	CONSTRAINT fk_instructor_details_id FOREIGN KEY (instructor_details_id) REFERENCES public.instructor_details(id)
+);
 ```

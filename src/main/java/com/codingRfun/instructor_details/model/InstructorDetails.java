@@ -1,25 +1,35 @@
 package com.codingRfun.instructor_details.model;
 
 import javax.persistence.Column;
+import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.Table;
 
 import com.codingRfun.instructor_details.interfaces._InstructorDetails;
 
+@Entity
+@Table(name = "instructor_details")
 public class InstructorDetails implements _InstructorDetails {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	@Column(name="id")
+	@Column(name = "id")
 	private Integer id;
-	@Column(name="yotube_channel")
+	@Column(name = "youtube_channel")
 	private String youtubeChannel;
-	@Column(name="hobby")
+	@Column(name = "hobby")
 	private String hobby;
 
 	public InstructorDetails(Integer id, String youtubeChannel, String hobby) {
 		super();
 		this.id = id;
+		this.youtubeChannel = youtubeChannel;
+		this.hobby = hobby;
+	}
+
+	public InstructorDetails(String youtubeChannel, String hobby) {
+		super();
 		this.youtubeChannel = youtubeChannel;
 		this.hobby = hobby;
 	}

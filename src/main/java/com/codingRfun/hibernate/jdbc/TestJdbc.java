@@ -1,45 +1,59 @@
 package com.codingRfun.hibernate.jdbc;
 
-import java.util.List;
+import javax.persistence.CascadeType;
+import javax.persistence.OneToOne;
 
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.cfg.Configuration;
 
+import com.codingRfun.instructor.model.Instructor;
+import com.codingRfun.instructor_details.model.InstructorDetails;
 import com.codingRfun.student.model.Student;
 
 @SuppressWarnings("unchecked")
 public class TestJdbc {
 
 	public static void main(String[] args) {
-		
-		// the default config name of hibernate is hibernate.cfg.xml
-		// config name is optional if your config name is default name
-		
 		SessionFactory sessionFactory = new Configuration().configure("hibernate.cfg.xml")
-				.addAnnotatedClass(Student.class).buildSessionFactory();
+				.addAnnotatedClass(Student.class).addAnnotatedClass(Instructor.class)
+				.addAnnotatedClass(InstructorDetails.class).buildSessionFactory();
 		Session session = sessionFactory.getCurrentSession();
+//		getInstructor(session);
+		insertOneToOne(session);
+	}
 
-		// 1. start transaction
+	public static void insertOneToOne(Session session) {
+		InstructorDetails instructorDetails = new InstructorDetails("leonardo de caprio", "actor");
+		
+		Instructor instructor = new Instructor("leonardo", "de caprio", "leonardo@gmail.com");
+		
+		instructor.setInstructorDetails(instructorDetails);
+		
 		session.beginTransaction();
 
-		// 2. get the student using the id in the second argument
-		// it will return the student from database
-		Student student = session.get(Student.class, 1);
-		System.out.println(student);
+		/*
+		 * change cascade to ALL, if you want to use session.save operations
+		 * 
+		 * cascase ALL is also applicable to session.persist and other session operations
+		 * 
+		 * @OneToOne(cascade = { CascadeType.ALL })
+		 */
 		
-		// 3. modify properties using setters
-		student.setFirstName("john");
-		student.setLastName("hopkins");
-		student.setEmail("hopkins@gmail.com");
-		
-		// 4. commit the transaction
+		session.persist(instructor);
+
 		session.getTransaction().commit();
-		
-		// 4. close the session
+
 		session.close();
-		
-		System.out.println(student);
+
+		System.out.println(instructor);
+	}
+
+	public static void getInstructor(Session session) {
+		session.beginTransaction();
+		Instructor instructor = session.get(Instructor.class, 1);
+		session.refresh(instructor);
+		System.out.println(instructor);
 	}
 
 }

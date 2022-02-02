@@ -1,5 +1,6 @@
 package com.codingRfun.instructor.model;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -15,18 +16,23 @@ import com.codingRfun.instructor_details.model.InstructorDetails;
 @Entity
 @Table(name = "instructors")
 public class Instructor implements _Instructor {
+
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Column(name = "id")
 	private Integer id;
+
 	@Column(name = "first_name")
 	private String firstName;
+
 	@Column(name = "last_name")
 	private String lastName;
+
 	@Column(name = "email")
 	private String email;
-	@OneToOne
-	@JoinColumn(name = "instructor-details-id")
+
+	@OneToOne(cascade = { CascadeType.PERSIST })
+	@JoinColumn(name = "instructor_details_id")
 	private InstructorDetails instructorDetails;
 
 	public Instructor(Integer id, String firstName, String lastName, String email,
@@ -39,9 +45,28 @@ public class Instructor implements _Instructor {
 		this.instructorDetails = instructorDetails;
 	}
 
+	public Instructor(String firstName, String lastName, String email, InstructorDetails instructorDetails) {
+		super();
+		this.firstName = firstName;
+		this.lastName = lastName;
+		this.email = email;
+		this.instructorDetails = instructorDetails;
+	}
+
+	public Instructor(String firstName, String lastName, String email) {
+		super();
+		this.firstName = firstName;
+		this.lastName = lastName;
+		this.email = email;
+	}
+
 	public Instructor(Integer id) {
 		super();
 		this.id = id;
+	}
+
+	public Instructor() {
+		super();
 	}
 
 	public Integer getId() {
