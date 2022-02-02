@@ -31,7 +31,7 @@ public class Instructor implements _Instructor {
 	@Column(name = "email")
 	private String email;
 
-	@OneToOne(cascade = { CascadeType.PERSIST })
+	@OneToOne(cascade = { CascadeType.PERSIST, CascadeType.REMOVE})
 	@JoinColumn(name = "instructor_details_id")
 	private InstructorDetails instructorDetails;
 

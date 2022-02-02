@@ -20,26 +20,29 @@ public class TestJdbc {
 				.addAnnotatedClass(InstructorDetails.class).buildSessionFactory();
 		Session session = sessionFactory.getCurrentSession();
 //		getInstructor(session);
-		insertOneToOne(session);
+//		insertOneToOne(session);
+		
+		deleteCascase(session, new Instructor(29));
 	}
 
 	public static void insertOneToOne(Session session) {
 		InstructorDetails instructorDetails = new InstructorDetails("leonardo de caprio", "actor");
-		
+
 		Instructor instructor = new Instructor("leonardo", "de caprio", "leonardo@gmail.com");
-		
+
 		instructor.setInstructorDetails(instructorDetails);
-		
+
 		session.beginTransaction();
 
 		/*
 		 * change cascade to ALL, if you want to use session.save operations
 		 * 
-		 * cascase ALL is also applicable to session.persist and other session operations
+		 * cascase ALL is also applicable to session.persist and other session
+		 * operations
 		 * 
 		 * @OneToOne(cascade = { CascadeType.ALL })
 		 */
-		
+
 		session.persist(instructor);
 
 		session.getTransaction().commit();
@@ -47,6 +50,17 @@ public class TestJdbc {
 		session.close();
 
 		System.out.println(instructor);
+	}
+
+	public static void deleteCascase(Session session, Instructor item) {
+		session.beginTransaction();
+		
+		Instructor instructor = session.get(item.getClass(), item.getId());
+		System.out.println("fetched instructor: " + instructor + "\n");
+
+		// delete cascade will only work if Cascase.REMOVE is added
+		session.delete(instructor);
+		session.getTransaction().commit();
 	}
 
 	public static void getInstructor(Session session) {
