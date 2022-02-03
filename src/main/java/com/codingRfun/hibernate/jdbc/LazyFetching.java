@@ -1,7 +1,5 @@
 package com.codingRfun.hibernate.jdbc;
 
-import javax.persistence.FetchType;
-
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.cfg.Configuration;
@@ -11,7 +9,7 @@ import com.codingRfun.instructor.model.Instructor;
 import com.codingRfun.instructor_details.model.InstructorDetails;
 import com.codingRfun.student.model.Student;
 
-public class EagerFetching {
+public class LazyFetching {
 
 	public static void main(String[] args) {
 		SessionFactory sessionFactory = new Configuration().configure("hibernate.cfg.xml")
@@ -24,13 +22,13 @@ public class EagerFetching {
 			Instructor instructor = session.get(Instructor.class, 1);
 
 			/*
-			 * configure instructor courses (fetch to FetchType.EAGER)
+			 * configure instructor courses (fetch to FetchType.LAZY)
 			 * 
-			 * toggle breakpoint in line 22 to see how eager loading 
+			 * toggle breakpoint in line 22 to see how lazy loading 
 			 * is fetched from the db
 			 * 
-			 * it will fetch all the courses the moment it fetches 
-			 * instructor
+			 * it will fetch all the courses the moment you view or 
+			 * get the list of courses in the instructor object
 			 */
 
 			System.out.println("Fun: " + instructor);
