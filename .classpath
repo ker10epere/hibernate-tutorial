@@ -1,0 +1,95 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<classpath>
+	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER/org.eclipse.jdt.internal.debug.ui.launcher.StandardVMType/JavaSE-1.8"/>
+	<classpathentry kind="src" path="src/main/java"/>
+	<classpathentry kind="src" path="WebContext"/>
+	<classpathentry kind="con" path="org.eclipse.jst.j2ee.internal.web.container"/>
+	<classpathentry kind="con" path="org.eclipse.jst.j2ee.internal.module.container"/>
+	<classpathentry kind="lib" path="WebContext/WEB-INF/lib/hibernate/antlr-2.7.7.jar"/>
+	<classpathentry kind="lib" path="WebContext/WEB-INF/lib/hibernate/byte-buddy-1.12.7.jar"/>
+	<classpathentry kind="lib" path="WebContext/WEB-INF/lib/hibernate/classmate-1.5.1.jar"/>
+	<classpathentry kind="lib" path="WebContext/WEB-INF/lib/hibernate/FastInfoset-1.2.15.jar"/>
+	<classpathentry kind="lib" path="WebContext/WEB-INF/lib/hibernate/hibernate-commons-annotations-5.1.2.Final.jar"/>
+	<classpathentry kind="lib" path="WebContext/WEB-INF/lib/hibernate/hibernate-core-5.6.5.Final.jar" sourcepath="C:/Users/XURPAS~1/AppData/Local/Temp/.org.sf.feeling.decompiler1643858243167/source/hibernate-core-5.6.5.Final-sources-1643866178797.jar"/>
+	<classpathentry kind="lib" path="WebContext/WEB-INF/lib/hibernate/istack-commons-runtime-3.0.7.jar"/>
+	<classpathentry kind="lib" path="WebContext/WEB-INF/lib/hibernate/jandex-2.4.2.Final.jar"/>
+	<classpathentry kind="lib" path="WebContext/WEB-INF/lib/hibernate/javax.activation-api-1.2.0.jar"/>
+	<classpathentry kind="lib" path="WebContext/WEB-INF/lib/hibernate/javax.persistence-api-2.2.jar" sourcepath="C:/Users/XURPAS~1/AppData/Local/Temp/.org.sf.feeling.decompiler1643858243167/source/javax.persistence-api-2.2-sources-1643866888347.jar"/>
+	<classpathentry kind="lib" path="WebContext/WEB-INF/lib/hibernate/jaxb-api-2.3.1.jar"/>
+	<classpathentry kind="lib" path="WebContext/WEB-INF/lib/hibernate/jaxb-runtime-2.3.1.jar"/>
+	<classpathentry kind="lib" path="WebContext/WEB-INF/lib/hibernate/jboss-logging-3.4.3.Final.jar"/>
+	<classpathentry kind="lib" path="WebContext/WEB-INF/lib/hibernate/jboss-transaction-api_1.2_spec-1.1.1.Final.jar"/>
+	<classpathentry kind="lib" path="WebContext/WEB-INF/lib/hibernate/stax-ex-1.8.jar"/>
+	<classpathentry kind="lib" path="WebContext/WEB-INF/lib/hibernate/txw2-2.3.1.jar"/>
+	<classpathentry kind="lib" path="WebContext/WEB-INF/lib/spring/javax.annotation-api-1.3.2.jar"/>
+	<classpathentry kind="lib" path="WebContext/WEB-INF/lib/spring/spring-aop-5.2.9.RELEASE.jar"/>
+	<classpathentry kind="lib" path="WebContext/WEB-INF/lib/spring/spring-aop-5.2.9.RELEASE-javadoc.jar"/>
+	<classpathentry kind="lib" path="WebContext/WEB-INF/lib/spring/spring-aop-5.2.9.RELEASE-sources.jar"/>
+	<classpathentry kind="lib" path="WebContext/WEB-INF/lib/spring/spring-aspects-5.2.9.RELEASE.jar"/>
+	<classpathentry kind="lib" path="WebContext/WEB-INF/lib/spring/spring-aspects-5.2.9.RELEASE-javadoc.jar"/>
+	<classpathentry kind="lib" path="WebContext/WEB-INF/lib/spring/spring-aspects-5.2.9.RELEASE-sources.jar"/>
+	<classpathentry kind="lib" path="WebContext/WEB-INF/lib/spring/spring-beans-5.2.9.RELEASE.jar"/>
+	<classpathentry kind="lib" path="WebContext/WEB-INF/lib/spring/spring-beans-5.2.9.RELEASE-javadoc.jar"/>
+	<classpathentry kind="lib" path="WebContext/WEB-INF/lib/spring/spring-beans-5.2.9.RELEASE-sources.jar"/>
+	<classpathentry kind="lib" path="WebContext/WEB-INF/lib/spring/spring-context-5.2.9.RELEASE.jar"/>
+	<classpathentry kind="lib" path="WebContext/WEB-INF/lib/spring/spring-context-5.2.9.RELEASE-javadoc.jar"/>
+	<classpathentry kind="lib" path="WebContext/WEB-INF/lib/spring/spring-context-5.2.9.RELEASE-sources.jar"/>
+	<classpathentry kind="lib" path="WebContext/WEB-INF/lib/spring/spring-context-indexer-5.2.9.RELEASE.jar"/>
+	<classpathentry kind="lib" path="WebContext/WEB-INF/lib/spring/spring-context-indexer-5.2.9.RELEASE-javadoc.jar"/>
+	<classpathentry kind="lib" path="WebContext/WEB-INF/lib/spring/spring-context-indexer-5.2.9.RELEASE-sources.jar"/>
+	<classpathentry kind="lib" path="WebContext/WEB-INF/lib/spring/spring-context-support-5.2.9.RELEASE.jar"/>
+	<classpathentry kind="lib" path="WebContext/WEB-INF/lib/spring/spring-context-support-5.2.9.RELEASE-javadoc.jar"/>
+	<classpathentry kind="lib" path="WebContext/WEB-INF/lib/spring/spring-context-support-5.2.9.RELEASE-sources.jar"/>
+	<classpathentry kind="lib" path="WebContext/WEB-INF/lib/spring/spring-core-5.2.9.RELEASE.jar"/>
+	<classpathentry kind="lib" path="WebContext/WEB-INF/lib/spring/spring-core-5.2.9.RELEASE-javadoc.jar"/>
+	<classpathentry kind="lib" path="WebContext/WEB-INF/lib/spring/spring-core-5.2.9.RELEASE-sources.jar"/>
+	<classpathentry kind="lib" path="WebContext/WEB-INF/lib/spring/spring-expression-5.2.9.RELEASE.jar"/>
+	<classpathentry kind="lib" path="WebContext/WEB-INF/lib/spring/spring-expression-5.2.9.RELEASE-javadoc.jar"/>
+	<classpathentry kind="lib" path="WebContext/WEB-INF/lib/spring/spring-expression-5.2.9.RELEASE-sources.jar"/>
+	<classpathentry kind="lib" path="WebContext/WEB-INF/lib/spring/spring-instrument-5.2.9.RELEASE.jar"/>
+	<classpathentry kind="lib" path="WebContext/WEB-INF/lib/spring/spring-instrument-5.2.9.RELEASE-javadoc.jar"/>
+	<classpathentry kind="lib" path="WebContext/WEB-INF/lib/spring/spring-instrument-5.2.9.RELEASE-sources.jar"/>
+	<classpathentry kind="lib" path="WebContext/WEB-INF/lib/spring/spring-jcl-5.2.9.RELEASE.jar"/>
+	<classpathentry kind="lib" path="WebContext/WEB-INF/lib/spring/spring-jcl-5.2.9.RELEASE-javadoc.jar"/>
+	<classpathentry kind="lib" path="WebContext/WEB-INF/lib/spring/spring-jcl-5.2.9.RELEASE-sources.jar"/>
+	<classpathentry kind="lib" path="WebContext/WEB-INF/lib/spring/spring-jdbc-5.2.9.RELEASE.jar"/>
+	<classpathentry kind="lib" path="WebContext/WEB-INF/lib/spring/spring-jdbc-5.2.9.RELEASE-javadoc.jar"/>
+	<classpathentry kind="lib" path="WebContext/WEB-INF/lib/spring/spring-jdbc-5.2.9.RELEASE-sources.jar"/>
+	<classpathentry kind="lib" path="WebContext/WEB-INF/lib/spring/spring-jms-5.2.9.RELEASE.jar"/>
+	<classpathentry kind="lib" path="WebContext/WEB-INF/lib/spring/spring-jms-5.2.9.RELEASE-javadoc.jar"/>
+	<classpathentry kind="lib" path="WebContext/WEB-INF/lib/spring/spring-jms-5.2.9.RELEASE-sources.jar"/>
+	<classpathentry kind="lib" path="WebContext/WEB-INF/lib/spring/spring-messaging-5.2.9.RELEASE.jar"/>
+	<classpathentry kind="lib" path="WebContext/WEB-INF/lib/spring/spring-messaging-5.2.9.RELEASE-javadoc.jar"/>
+	<classpathentry kind="lib" path="WebContext/WEB-INF/lib/spring/spring-messaging-5.2.9.RELEASE-sources.jar"/>
+	<classpathentry kind="lib" path="WebContext/WEB-INF/lib/spring/spring-orm-5.2.9.RELEASE.jar"/>
+	<classpathentry kind="lib" path="WebContext/WEB-INF/lib/spring/spring-orm-5.2.9.RELEASE-javadoc.jar"/>
+	<classpathentry kind="lib" path="WebContext/WEB-INF/lib/spring/spring-orm-5.2.9.RELEASE-sources.jar"/>
+	<classpathentry kind="lib" path="WebContext/WEB-INF/lib/spring/spring-oxm-5.2.9.RELEASE.jar"/>
+	<classpathentry kind="lib" path="WebContext/WEB-INF/lib/spring/spring-oxm-5.2.9.RELEASE-javadoc.jar"/>
+	<classpathentry kind="lib" path="WebContext/WEB-INF/lib/spring/spring-oxm-5.2.9.RELEASE-sources.jar"/>
+	<classpathentry kind="lib" path="WebContext/WEB-INF/lib/spring/spring-test-5.2.9.RELEASE.jar"/>
+	<classpathentry kind="lib" path="WebContext/WEB-INF/lib/spring/spring-test-5.2.9.RELEASE-javadoc.jar"/>
+	<classpathentry kind="lib" path="WebContext/WEB-INF/lib/spring/spring-test-5.2.9.RELEASE-sources.jar"/>
+	<classpathentry kind="lib" path="WebContext/WEB-INF/lib/spring/spring-tx-5.2.9.RELEASE.jar"/>
+	<classpathentry kind="lib" path="WebContext/WEB-INF/lib/spring/spring-tx-5.2.9.RELEASE-javadoc.jar"/>
+	<classpathentry kind="lib" path="WebContext/WEB-INF/lib/spring/spring-tx-5.2.9.RELEASE-sources.jar"/>
+	<classpathentry kind="lib" path="WebContext/WEB-INF/lib/spring/spring-web-5.2.9.RELEASE.jar"/>
+	<classpathentry kind="lib" path="WebContext/WEB-INF/lib/spring/spring-web-5.2.9.RELEASE-javadoc.jar"/>
+	<classpathentry kind="lib" path="WebContext/WEB-INF/lib/spring/spring-web-5.2.9.RELEASE-sources.jar"/>
+	<classpathentry kind="lib" path="WebContext/WEB-INF/lib/spring/spring-webflux-5.2.9.RELEASE.jar"/>
+	<classpathentry kind="lib" path="WebContext/WEB-INF/lib/spring/spring-webflux-5.2.9.RELEASE-javadoc.jar"/>
+	<classpathentry kind="lib" path="WebContext/WEB-INF/lib/spring/spring-webflux-5.2.9.RELEASE-sources.jar"/>
+	<classpathentry kind="lib" path="WebContext/WEB-INF/lib/spring/spring-webmvc-5.2.9.RELEASE.jar"/>
+	<classpathentry kind="lib" path="WebContext/WEB-INF/lib/spring/spring-webmvc-5.2.9.RELEASE-javadoc.jar"/>
+	<classpathentry kind="lib" path="WebContext/WEB-INF/lib/spring/spring-webmvc-5.2.9.RELEASE-sources.jar"/>
+	<classpathentry kind="lib" path="WebContext/WEB-INF/lib/spring/spring-websocket-5.2.9.RELEASE.jar"/>
+	<classpathentry kind="lib" path="WebContext/WEB-INF/lib/spring/spring-websocket-5.2.9.RELEASE-javadoc.jar"/>
+	<classpathentry kind="lib" path="WebContext/WEB-INF/lib/spring/spring-websocket-5.2.9.RELEASE-sources.jar"/>
+	<classpathentry kind="lib" path="WebContext/WEB-INF/lib/postgresql-42.3.1.jar"/>
+	<classpathentry kind="con" path="org.eclipse.jst.server.core.container/org.eclipse.jst.server.tomcat.runtimeTarget/Tomcat 8.5">
+		<attributes>
+			<attribute name="owner.project.facets" value="jst.web"/>
+		</attributes>
+	</classpathentry>
+	<classpathentry kind="output" path="build/classes"/>
+</classpath>
