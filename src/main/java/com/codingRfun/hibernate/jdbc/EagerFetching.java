@@ -1,7 +1,5 @@
 package com.codingRfun.hibernate.jdbc;
 
-import javax.persistence.FetchType;
-
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.cfg.Configuration;
