@@ -24,19 +24,10 @@ public class LazyFetchReviewUniDirectional {
 		System.out.println();
 		System.out.println();
 		try {
-			System.out.println("Course");
-			
 			Course course = session.get(Course.class, 1);
-			System.out.println("Fun Course: " + course);
-			System.out.println("Fun Reviews: " + course.getReviews());
-			
-			System.out.println();
-			System.out.println("Review");
-			
-			Review review = session.get(Review.class, 1);
-			System.out.println("Fun Review: " + review);
-			System.out.println("Fun Course: " + review.getCourse());
-			
+
+			session.delete(course);
+			session.getTransaction().commit();
 		} catch (Exception e) {
 			e.printStackTrace();
 		} finally {
