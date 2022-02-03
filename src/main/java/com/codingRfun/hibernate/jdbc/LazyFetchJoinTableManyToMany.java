@@ -24,18 +24,12 @@ public class LazyFetchJoinTableManyToMany {
 		System.out.println();
 		System.out.println();
 		try {
-			Course course = new Course("Ultimate Godot Masterclass");
+			Course item = new Course(5);
 			
-			Student s1 = new Student("John", "Hopkins","hopkins@email.com");
-			Student s2 = new Student("Albert", "Einstein","aeinstein@email.com");
+			Course course = session.get(Course.class, item.getId());
 			
-			course.addStudent(s1, s2);
-			
-			session.persist(course);
-			
-			session.getTransaction().commit();
-			
-			System.out.println(course);
+			System.out.println("FUN Course: " + course);
+			System.out.println("FUN Course Students: " + course.getStudents());
 		} catch (Exception e) {
 			e.printStackTrace();
 		} finally {
