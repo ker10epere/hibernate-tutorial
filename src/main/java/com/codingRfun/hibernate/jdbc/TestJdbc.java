@@ -21,7 +21,7 @@ public class TestJdbc {
 //		deleteCascade(session, new Instructor(29));
 //		deleteCascadeInstructorDetailsBiDirectional(session, new InstructorDetails(1));
 //		dontDeleteCascadeInstructorDetails(session, new InstructorDetails(2));
-		
+
 //		InstructorDetails instructorDetails = new InstructorDetails("ker tenepere", "expert");
 //		Instructor instructor = new Instructor("ker", "tenepere", "ker@gmail.com");
 //		Session currentSession1 = sessionFactory.getCurrentSession();
@@ -30,7 +30,9 @@ public class TestJdbc {
 //		Session currentSession2 = sessionFactory.getCurrentSession();
 //		createCourses(currentSession2, instructor, new Course("Ice Skating MasterClass"),
 //				new Course("Cooking MasterClass"), new Course("ReactJs MasterClass"));
-		getAllCoursesFromInstructor(session, new Instructor(1));
+//		getAllCoursesFromInstructor(session, new Instructor(1));
+
+		deleteCourse(session, new Course(1));
 	}
 
 	public static void insertOneToOne(Session session, Instructor instructor, InstructorDetails instructorDetails) {
@@ -174,6 +176,20 @@ public class TestJdbc {
 			System.out.println();
 			System.out.println(instructor);
 			System.out.println(instructor.getCourses());
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			session.close();
+		}
+	}
+
+	public static void deleteCourse(Session session, Course item) {
+		session.beginTransaction();
+		try {
+			Course course = session.get(Course.class, item.getId());
+			System.out.println(course);
+			session.delete(course);
+			session.getTransaction().commit();
 		} catch (Exception e) {
 			e.printStackTrace();
 		} finally {
