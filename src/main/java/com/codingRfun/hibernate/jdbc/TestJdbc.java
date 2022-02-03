@@ -15,23 +15,22 @@ public class TestJdbc {
 		SessionFactory sessionFactory = new Configuration().configure("hibernate.cfg.xml")
 				.addAnnotatedClass(Student.class).addAnnotatedClass(Instructor.class)
 				.addAnnotatedClass(InstructorDetails.class).addAnnotatedClass(Course.class).buildSessionFactory();
-//		Session session = sessionFactory.getCurrentSession();
+		Session session = sessionFactory.getCurrentSession();
 //		getInstructor(session);
 //		getInstructorDetails(session, new InstructorDetails(1));
 //		deleteCascade(session, new Instructor(29));
 //		deleteCascadeInstructorDetailsBiDirectional(session, new InstructorDetails(1));
 //		dontDeleteCascadeInstructorDetails(session, new InstructorDetails(2));
-		InstructorDetails instructorDetails = new InstructorDetails("ker tenepere", "expert");
-		Instructor instructor = new Instructor("ker", "tenepere", "ker@gmail.com");
-
-		Session currentSession1 = sessionFactory.getCurrentSession();
-		insertOneToOne(currentSession1, instructor, instructorDetails);
-
-		System.out.println("Outside Instructor" + instructor);
-
-		Session currentSession2 = sessionFactory.getCurrentSession();
-		createCourses(currentSession2, instructor, new Course("Ice Skating MasterClass"),
-				new Course("Cooking MasterClass"), new Course("ReactJs MasterClass"));
+		
+//		InstructorDetails instructorDetails = new InstructorDetails("ker tenepere", "expert");
+//		Instructor instructor = new Instructor("ker", "tenepere", "ker@gmail.com");
+//		Session currentSession1 = sessionFactory.getCurrentSession();
+//		insertOneToOne(currentSession1, instructor, instructorDetails);
+//		System.out.println("Outside Instructor" + instructor);
+//		Session currentSession2 = sessionFactory.getCurrentSession();
+//		createCourses(currentSession2, instructor, new Course("Ice Skating MasterClass"),
+//				new Course("Cooking MasterClass"), new Course("ReactJs MasterClass"));
+		getAllCoursesFromInstructor(session, new Instructor(1));
 	}
 
 	public static void insertOneToOne(Session session, Instructor instructor, InstructorDetails instructorDetails) {
@@ -161,6 +160,20 @@ public class TestJdbc {
 
 			session.getTransaction().commit();
 
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			session.close();
+		}
+	}
+
+	public static void getAllCoursesFromInstructor(Session session, Instructor item) {
+		session.beginTransaction();
+		try {
+			Instructor instructor = session.get(Instructor.class, item.getId());
+			System.out.println();
+			System.out.println(instructor);
+			System.out.println(instructor.getCourses());
 		} catch (Exception e) {
 			e.printStackTrace();
 		} finally {
