@@ -11,12 +11,15 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
+import javax.persistence.JoinTable;
+import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 import com.codingRfun.instructor.model.Instructor;
 import com.codingRfun.review.model.Review;
+import com.codingRfun.student.model.Student;
 
 @Entity
 @Table(name = "courses")
@@ -29,13 +32,18 @@ public class Course {
 	@Column(name = "title")
 	private String title;
 
-	@ManyToOne(cascade = { CascadeType.PERSIST, CascadeType.DETACH, CascadeType.MERGE, CascadeType.REFRESH })
+	@ManyToOne(cascade = { CascadeType.PERSIST, CascadeType.DETACH, CascadeType.MERGE, CascadeType.REFRESH, })
 	@JoinColumn(name = "instructor_id")
 	private Instructor instructor;
 
 	@OneToMany(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
 	@JoinColumn(name = "course_id")
 	private List<Review> reviews;
+
+	@ManyToMany(fetch = FetchType.LAZY, cascade = { CascadeType.PERSIST, CascadeType.DETACH, CascadeType.MERGE,
+			CascadeType.REFRESH })
+	@JoinTable(name = "course_student", joinColumns = @JoinColumn(name = "course_id"), inverseJoinColumns = @JoinColumn(name = "student_id"))
+	private List<Student> students;
 
 	public Course(Integer id, String title, Instructor instructor) {
 		super();
@@ -96,12 +104,36 @@ public class Course {
 		this.reviews = reviews;
 	}
 
+	public List<Student> getStudents() {
+		return students;
+	}
+
+	public void setStudents(List<Student> students) {
+		this.students = students;
+	}
+
 	// add review convenience method
-	public void addReview(Review item) {
+	public void addReview(Review... items) {
 		if (reviews == null) {
 			reviews = new ArrayList<Review>();
 		}
-		reviews.add(item);
+
+		for (Review review : items) {
+			reviews.add(review);
+		}
+
+	}
+
+	// add student convenience method
+	public void addStudent(Student... items) {
+		if (students == null) {
+			students = new ArrayList<Student>();
+		}
+
+		for (Student student : items) {
+			students.add(student);
+		}
+
 	}
 
 	@Override
