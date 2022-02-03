@@ -44,7 +44,9 @@ CREATE TABLE public.instructors (
 		email text NULL,
 		instructor_details_id int4 NULL,
 		CONSTRAINT instructor_pkey PRIMARY KEY (id),
-		CONSTRAINT fk_instructor_details_id FOREIGN KEY (instructor_details_id) REFERENCES public.instructor_details(id)
+		CONSTRAINT fk_instructor_details_id 
+		FOREIGN KEY (instructor_details_id) 
+		REFERENCES instructor_details(id)
 );
 ```
 
